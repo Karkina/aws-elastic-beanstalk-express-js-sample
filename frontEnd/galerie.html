@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mes articles</title>
+  <meta charset="utf-8">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" type="text/css" href="css/galerie.css">
+  <link rel="stylesheet" type="text/css" href="css/carrousel.css">
+  <link rel="stylesheet" type="text/css" href="css/modal.css">
+
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+
+
+   <script src="./js/carrousel.js"></script>
+   <script src="./js/note.js"></script>
+
+ <script src="js/external/jquery/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ <!--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+   <style type="text/css">
+      .ui-autocomplete-row
+      {
+        padding:8px;
+        background-color: #f4f4f4;
+        border-bottom:1px solid #ccc;
+        font-weight:bold;
+      }
+      .ui-autocomplete-row:hover
+      {
+        background-color: #ddd;
+      }
+    </style>
+
+
+</head>
+<body  onload="galerie()">
+  <div class="container" style="height: 65px;">
+  <nav class="navbar navbar-expand-lg fixed-top ">  
+ <a href="index.html"><img src="img/affiche.png" class="logo" style="width: 500px; height: 35px;"/></a>
+ 
+<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+ <span class="navbar-toggler-icon"></span>
+</button> -->
+
+<ul class="navbar-nav ml-auto">
+ <div class="dropdown">
+  <button id="buttonCat" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+      Categorie
+    </button>
+    <div  id ="lesCategories" class="dropdown-menu">
+     </div>
+    </div>
+</ul>
+
+</div>
+</nav>
+</div>
+
+
+<div id="galerie">
+<div class="portfolio">
+  <!-- La Galerie -->
+     <h1 style="color:white" class="text-center">Les articles</h1>
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img id="galerie1" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img id="galerie2" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img  id="galerie3" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+      
+<div class="col-lg-4 col-md-4 col-sm-12">
+    <img  id="galerie4" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img  id="galerie5" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img  id="galerie6" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+      
+<div class="col-lg-4 col-md-4 col-sm-12">
+    <img  id="galerie7" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img id="galerie8"  src="" class="img-fluid" onclick="popupImage(this.alt)"> 
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12">
+    <img  id="galerie9" src="" class="img-fluid" onclick="popupImage(this.alt)">
+   </div>
+  </div>
+  <i class="fa fa-refresh" style="font-size:36px; margin-left: 50%" onclick="reloadGalerie()"></i>
+ </div>
+</div>
+</div>
+
+
+
+<!-- L'affichage de la pop-up -->
+<div id="myModal" class="modalPhoto">
+
+  <span class="close">&times;</span>
+  <div class="modal-contentPhoto">
+    <img  id="img01">
+    <div id="categorie"  class="real"> </div>
+    <div id="prix" class="real"> </div>
+    <div id="description" class="synopsis"> </div>
+    <a href="contact/index.html">
+    <button type="button" class="btn btn-info buttonCenter">Me contacter</button>
+    </a>
+  </div> 
+</div>
+</body>
+
+</html>
+<script>
+/*Les affichage des catégories à partir de notre table php*/
+$(document).ready(function(){
+  $.ajax({
+    type: "POST",
+    url: '../backEnd/categorie.php',
+    data: $(this).serialize()
+    }).then(
+    // resolve/success callback
+    function(response)
+    {
+      var jsonData = JSON.parse(response);
+      var cat = document.getElementById("lesCategories");
+      cat.innerHTML = jsonData['catTest'];
+     
+        
+    },
+    // reject/failure callback
+    function()
+    {
+        alert('There was some error!');
+    }
+);
+});
+
+</script>

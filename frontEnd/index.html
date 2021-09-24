@@ -1,0 +1,100 @@
+<!DOCTYPE>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="HTML,CSS,JAVAscript,Bootstrap,PHP" />
+    <meta name="author" content="XU Huan" />
+    <meta name="description" content="cineo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Boudoir Des Créateur</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="icon" href="img/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="css/styleIndex.css">
+    <!-- <script src="js/style.js"></script> -->
+
+
+</head>
+
+<body>
+    <div class="bg" id="homePage">
+        <div class="banner">
+	        <div class="centerPOST">
+		        <div class="row"> 
+			        <div class="col-lg-4 col-md-4 col-sm-12">
+			        	<div class="imageOverlay">
+			        	
+			        		<img id="maphoto" src="img/boutique.png">
+			        	
+			        	<div id="overlay" onclick="Galerie()">
+
+			        		<div class="text">Vers la boutique</div>
+
+			        	 </div>
+
+			        </div>
+			        </div>
+
+			        <div class="col-lg-4 col-md-4 col-sm-12">
+			        	<div class="imageOverlay" onclick="contact()">
+				        	<img src="img/contact_MOGRA.jpg">
+				        	<div id="overlay"> 
+				        			<div class="text">Contactez moi</div>
+				        	</div>
+			        	</div>
+			        </div> 
+
+			        <div class="col-lg-4 col-md-4 col-sm-12">
+			        	<div class="imageOverlay">
+			        	<img src="img/position.jpg">
+			        	<div id="overlay" onclick="Map()"> 
+				        			<div class="text">Vers ma position</div>
+				        	</div>
+			        </div>
+			        </div>             
+		 
+		        </div>
+    		</div>
+    </div>
+   </div>
+   <div id="map">
+   <button style="margin-left: 50%; margin-right:50%; height:50px ;width:150px" type="button" class="btn btn-danger" onclick="afficherHome()">Retour boutique</button>
+   <iframe style="width: 100%;height:100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2648.7073301382597!2d2.696132915841575!3d48.4045633405065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5f488f79f47bf%3A0x9e4736debe6898a3!2s21%20Rue%20de%20France%2C%2077300%20Fontainebleau!5e0!3m2!1sfr!2sfr!4v1627744896916!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+
+
+
+</body>
+
+</html>
+<script>
+function Map(){
+	$("#map").css("display","block");
+	$("#homePage").css("display","none");
+}
+
+
+function afficherHome(){
+	$("#map").css("display","none");
+	$("#homePage").css("display","block");
+}
+
+function Galerie(){
+
+ location.replace("galerie.html")
+}
+
+function contact(){
+
+ location.replace("contact/index.html")
+}
+</script>

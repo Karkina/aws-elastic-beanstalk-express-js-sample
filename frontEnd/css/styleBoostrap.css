@@ -1,0 +1,33 @@
+.center{
+ 	text-align: center;
+ }
+ .centerButton{
+ 	visibility: hidden;
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	height: 200px;
+ }
+.button1{
+	width:50%;
+	font-size: 80px;
+
+}
+ .body{
+ 	background-color: lightblue;
+ }
+
+ .mesChoix img{
+	border-width:5px;
+	border-style: solid;
+	border-color: black;
+	/*margin-right: 20px;*/
+	width: 24%;
+	height: 350px;
+}
+.resultat{
+	visibility: hidden;
+}
+.resultat img{
+	border:5px solid black;
+}
